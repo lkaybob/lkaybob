@@ -1,0 +1,32 @@
+Account Setting @ System Preference
+    Mail : Hotmail, Personam Mail Address, UCI, Corporate / Setup Signatures
+    Calendar : iCloud, Google (Personal, add calendar for GCK)
+    Handoff
+    Turnoff Dashboard
+System : Set ssh private key (for Github Access etc.)
+Eduroam Profile Install from UCI
+Franz : Add Service (Todoist, GDG Korea Slack, Telegram)
+Tripmode : Enable communication for prey
+Chrome : Add profiles
+Evernote : Set Account
+
+D2Coding
+	Set as default font for iTerm2 & IDEs
+Avast Security for Mac
+Acronic True Image
+Avast Password
+Magnet
+Google Play Music Manager
+Nvidia GeFroce Now for Mac
+Splashtop XDisplay
+Microsoft Office
+Send Anywhere
+Kakaotalk
+Hashsum
+Selfcontrol
+PIPfier
+
+Twitter
+Elmedia Vidio Player
+Vox
+Anysecond
