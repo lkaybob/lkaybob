@@ -20,5 +20,7 @@ cd $HOME/.oh-my-zsh/custome/themes
 wget https://raw.githubusercontent.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme
 cd $HOME
 
+[ ! -f $HOME/.bash_profile ] && ln -nfs $HOME/dotfiles/.bash_profile $HOME/.bash_profile
+
 [ ! -f $HOME/.zshrc ] && ln -nfs $HOME/dotfiles/.zshrc $HOME/.zshrc
 source $HOME/.zshrc
