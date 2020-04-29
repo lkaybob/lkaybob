@@ -1,65 +1,128 @@
-tap "caskroom/cask"
-tap "homebrew/php"
-
-# Shell
-brew "zsh"
-
-# Docker Stack
-brew "docker"
-brew "docker-compose"
-brew "docker-machine"		# Virtualbox-based
-brew "docker-machine-parallels"	# Parallels-based
-
-cask "docker"
-
-# Development
-## Language
-brew "flex"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "mas-cli/tap"
+tap "mongodb/brew"
+tap "pivotal/tap"
+tap "tclass/cloud_sql_proxy"
+tap "weaveworks/tap"
+cask "adoptopenjdk8"
 brew "gdbm"
-brew "go"
 brew "libyaml"
+brew "openssl@1.1"
+brew "sqlite"
+brew "ansible"
+brew "autossh"
+brew "aws-iam-authenticator"
+brew "awscli"
+brew "azure-cli"
 brew "pcre"
 brew "python"
-brew "python3"
+brew "docker"
+brew "docker-machine"
+brew "ffmpeg"
+brew "flex"
+brew "gdb"
+brew "go"
+brew "gradle"
+brew "htop"
+brew "hugo"
+brew "libimobiledevice", args: ["HEAD"]
+brew "ideviceinstaller"
 brew "node"
-# brew "nodeenv"
-brew "swift"
-
-cask "java"
-
-## IDE
-cask "clion"
-cask "intellij-idea"
-cask "android-studio"
-cask "webstorm"
-cask "sublime-text"
-cask "pycharm"
-cask "phpstorm"			# For Intern
-
-## Database
-brew "sqlite"
-
-## Tools
-cask "filezilla"
-cask "postman"
-cask "iterm2"
-cask "teamviewer"
-
-# Productivity
-brew "openssl"
-brew "openssl@1.1"
+brew "joplin"
+brew "jq"
+brew "libusbmuxd", args: ["HEAD"]
+brew "maven"
+brew "minikube"
+brew "mysql-client"
+brew "openapi-generator"
+brew "pandoc"
+brew "pyenv"
+brew "pyenv-virtualenv"
+brew "qemu"
+brew "redis"
+brew "ruby"
+brew "rustup-init"
+brew "screen"
+brew "sox"
+brew "swagger-codegen"
+brew "swagger-codegen@2"
+brew "tmux"
+brew "tree"
 brew "wget"
-
+brew "zsh"
+brew "mas-cli/tap/mas"
+brew "pivotal/tap/springboot"
+brew "tclass/cloud_sql_proxy/cloud_sql_proxy"
+brew "weaveworks/tap/eksctl"
+cask "acronis-true-image"
+cask "android-file-transfer"
+cask "android-sdk"
+cask "android-studio"
+cask "avast-security"
+cask "balenaetcher"
+cask "bartender"
+cask "clion"
+cask "dropbox"
+cask "eclipse-java"
+cask "evernote"
+cask "filezilla"
+cask "flux"
 cask "franz"
 cask "google-chrome"
-cask "parallels-desktop"
-cask "evernote"
-cask "onedrive"
-cask "typora"
-cask "mailbutler"
+cask "google-cloud-sdk"
+cask "google-drive-file-stream"
+cask "intellij-idea"
+cask "iterm2"
 cask "karabiner-elements"
-cask "dropbox"
-cask "ridibooks"
+cask "keybase"
+cask "logitech-options"
+cask "mactex"
+cask "mattermost"
+cask "microsoft-teams"
+cask "minikube"
+cask "mongodb-compass-community"
+cask "mysql-shell"
+cask "mysqlworkbench"
+cask "ngrok"
+cask "obs"
+cask "parallels-toolbox"
+cask "phpstorm"
+cask "postman"
 cask "prey"
-
-cask "flux"
+cask "pycharm"
+cask "selfcontrol"
+cask "skyfonts"
+cask "steam"
+cask "sublime-text"
+cask "teamviewer"
+cask "transmission"
+cask "tripmode"
+cask "tunnelblick"
+cask "typora"
+cask "vagrant"
+cask "virtualbox"
+cask "visual-studio-code"
+cask "vysor"
+cask "webstorm"
+cask "wireshark"
+cask "xbox360-controller-driver-unofficial"
+cask "zoomus"
+mas "Airmail", id: 918858936
+mas "AnySecond", id: 991622544
+mas "Avast Passwords", id: 1114498254
+mas "Bandizip", id: 1265704574
+mas "Elmedia Video Player", id: 1044549675
+mas "Evernote Web Clipper", id: 1481669779
+mas "KakaoTalk", id: 869223134
+mas "Keynote", id: 409183694
+mas "Magnet", id: 441258766
+mas "Microsoft To Do", id: 1274495053
+mas "OneDrive", id: 823766827
+mas "OTP Manager", id: 928941247
+mas "PiPifier", id: 1160374471
+mas "Save to Pocket", id: 1477385213

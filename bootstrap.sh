@@ -22,10 +22,3 @@ cd $HOME
 
 [ ! -f $HOME/.zshrc ] && ln -nfs $HOME/dotfiles/.zshrc $HOME/.zshrc
 source $HOME/.zshrc
-
-
-
-# PHP Version Switcher
-# if test ! $(which sphp); then
-	# source $HOME/dotfiles/sphp-install.sh
-# fi
