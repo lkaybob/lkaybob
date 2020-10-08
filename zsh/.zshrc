@@ -99,3 +99,5 @@ source $ZSH/oh-my-zsh.sh
 
 # Apply .bash_profile (Personal settings)
 source ~/.bash_profile
+# added by travis gem
+[ ! -s $HOME/.travis/travis.sh ] || source $HOME/.travis/travis.sh 
