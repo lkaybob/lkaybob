@@ -98,6 +98,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Apply .bash_profile (Personal settings)
-source ~/.bash_profile
-# added by travis gem
-[ ! -s $HOME/.travis/travis.sh ] || source $HOME/.travis/travis.sh 
+if [ -f $HOME/.bash_profile ]; then
+  source $HOME/.bash_profile
+fi

@@ -458,7 +458,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/dotfiles</string>
+	<string>~/dotfiles/osx</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{799, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -505,15 +505,15 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>0 150 224 275 0 0 1680 1027 </string>
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
-	<string>440 451 799 448 0 0 1680 1027 </string>
+	<string>440 451 799 448 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>640 673 400 129 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 476 620 392 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 582 650 438 0 0 1680 1050 </string>
+	<string>336 589 650 438 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>840 585 650 438 0 0 1680 1050 </string>
+	<string>0 589 665 438 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>742 579 665 438 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -4769,7 +4769,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>4B370A2F-6E36-45B9-9DEF-4CA0A8667A48</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>48</integer>
+	<integer>64</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -5568,7 +5568,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/lkaybob/dotfiles</string>
+	<string>/Users/lkaybob/dotfiles/osx</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
@@ -5580,7 +5580,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-09-03T14:39:48Z</date>
+	<date>2020-10-07T14:58:34Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateGroupIdentifier</key>
