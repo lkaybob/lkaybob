@@ -5,3 +5,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
+
+set expandtab
+set shiftwidth=2
+set softtabstop=2

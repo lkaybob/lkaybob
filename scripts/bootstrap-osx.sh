@@ -21,3 +21,5 @@ ln -nfs $HOME/dotfiles/osx/.bash_profile $HOME/.bash_profile
 
 [ ! -f $HOME/.zshrc ] && ln -nfs $HOME/dotfiles/.zshrc $HOME/.zshrc
 source $HOME/.zshrc
+
+# TODO nvim initialization should be performed at last.
