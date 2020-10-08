@@ -1,0 +1,2 @@
+apt-transport-https ca-certificates curl gnugpg-agent software-properties-common
+build-essentials libssl-dev libff-dev
