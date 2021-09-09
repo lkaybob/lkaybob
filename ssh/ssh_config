@@ -6,6 +6,3 @@ Host *
   ForwardAgent yes
   ControlMaster auto
   ControlPath /tmp/ssh-%i@%l-%r@%h:%p
-  RequestTTY yes
-  RemoteCommand tmux -CC new -A -s macos
-
