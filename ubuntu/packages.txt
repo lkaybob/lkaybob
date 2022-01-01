@@ -1,4 +1,4 @@
-tmux neovim
+tmux neovim zsh
 
 nodejs
 docker-ce docker-ce-cli containerd.io
