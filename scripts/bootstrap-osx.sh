@@ -1,3 +1,4 @@
+# TODO $REPO_NAME env definition
 # Check if homebrew exists
 if test ! $(which brew); then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -12,6 +13,7 @@ brew bundle --file=$HOME/dotfiles/osx/Brewfile
 brew cleanup
 brew cask cleanup
 
+# TODO Replace with zsh/init.sh
 # Set the zsh as primary shell
 chsh -s $(which zsh)
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
