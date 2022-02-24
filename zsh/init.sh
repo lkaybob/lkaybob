@@ -1,7 +1,7 @@
 # TODO Test if zsh exists
 
 # Install oh-my-zsh
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" --skip-chsh
 
 # Synchronize bullet-train theme
 cd $HOME/lkaybob/zsh
@@ -12,5 +12,6 @@ cd $HOME/lkaybob
 
 ln -nfs $HOME/lkaybob/osx/.bash_profile $HOME/.bash_profile
 
-[ ! -f $HOME/.zshrc ] && ln -nfs $HOME/lkaybob/.zshrc $HOME/.zshrc
+[ ! -f $HOME/.zshrc ] && rm $HOME/.zshrc
+ln -nfs $HOME/lkaybob/.zshrc $HOME/.zshrc
 source $HOME/.zshrc
