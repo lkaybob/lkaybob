@@ -11,9 +11,8 @@ then
   ln -nfs $HOME/lkaybob/zsh/themes/bullet-train/bullet-train.zsh-theme $HOME/.oh-my-zsh/themes/bullet-train.zsh-theme
   cd $HOME/lkaybob
   
-  ln -nfs $HOME/lkaybob/osx/.bash_profile $HOME/.bash_profile
   
   [ ! -f $HOME/.zshrc ] && rm $HOME/.zshrc
-  ln -nfs $HOME/lkaybob/.zshrc $HOME/.zshrc
+  ln -nfs $HOME/lkaybob/zsh/.zshrc $HOME/.zshrc
   source $HOME/.zshrc
 fi

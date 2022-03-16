@@ -15,4 +15,5 @@ brew cask cleanup
 # Init zsh
 $HOME/lkaybob/zsh/init.sh
 
-# TODO nvim initialization should be performed at last.
+ln -nfs $HOME/lkaybob/osx/.bash_profile $HOME/.bash_profile
+ln -nfs $HOME/lkaybob/osx/.bash_aliases $HOME/.bash_aliases
