@@ -1,4 +1,0 @@
-coc-marketplace coc-json coc-sh
-coc-vetur
-coc-phpls
-coc-rls
