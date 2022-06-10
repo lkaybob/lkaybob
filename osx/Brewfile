@@ -85,25 +85,31 @@ brew "mas-cli/tap/mas"
 brew "tclass/cloud_sql_proxy/cloud_sql_proxy"
 brew "weaveworks/tap/eksctl"
 cask "1password"
+cask "1password-cli"
 cask "adobe-acrobat-reader"
 cask "adoptopenjdk"
 cask "adoptopenjdk11"
 cask "balenaetcher"
 cask "bartender"
+cask "citrix-workspace"
 cask "discord"
 cask "docker"
 cask "evernote"
 cask "firefox"
+cask "flux"
 cask "google-chrome"
 cask "google-cloud-sdk"
+cask "insomnia"
 cask "iterm2"
 cask "jetbrains-toolbox"
-cask "logitech-g-hub"
 cask "microsoft-teams"
 cask "mongodb-compass"
 cask "mysql-shell"
+cask "notion"
 cask "obs"
 cask "omegat"
+cask "ridibooks"
+cask "scroll-reverser"
 cask "selfcontrol"
 cask "sourcetree"
 cask "spotify"
@@ -112,10 +118,11 @@ cask "typora"
 cask "vagrant"
 cask "visual-studio-code"
 cask "webex-meetings"
+cask "xquartz"
 cask "zoom"
+mas "1Password for Safari", id: 1569813296
 mas "AnySecond", id: 991622544
 mas "Bandizip", id: 1265704574
-mas "Canary Mail", id: 1236045954
 mas "Elmedia Video Player", id: 1044549675
 mas "Evernote Web Clipper", id: 1481669779
 mas "KakaoTalk", id: 869223134
@@ -125,7 +132,9 @@ mas "Microsoft Outlook", id: 985367838
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft To Do", id: 1274495053
 mas "Microsoft Word", id: 462054704
+mas "Numbers", id: 409203825
 mas "PiPifier", id: 1160374471
 mas "Save to Pocket", id: 1477385213
 mas "Slack", id: 803453959
+mas "Twitter", id: 1482454543
 mas "WireGuard", id: 1451685025
