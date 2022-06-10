@@ -29,7 +29,7 @@ set_zsh() {
       https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
     
     [ ! -f $HOME/.zshrc ] && rm $HOME/.zshrc
-    ln -nfs $DOTFILES/zsh/.zshrc $HOME/.zshrc
+    ln -nfs $DOTFILES/.zshrc $HOME/.zshrc
   fi
 }
 
@@ -67,6 +67,8 @@ install_linux_packages() {
 set_bash_files() {
   ln -nfs $DOTFILES/.bash_aliases $HOME/.bash_aliases
   ln -nfs $DOTFILES/.bash_profile $HOME/.bash_profile
+
+  source $HOME/.bash_profile
 }
 
 set_tmux() {
