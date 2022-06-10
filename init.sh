@@ -50,7 +50,7 @@ set_homebrew() {
 }
 
 # TODO RHEL / CentOS?
-install_packages() {
+install_linux_packages() {
   sudo apt update
   paste -sd ' ' $DOTFILES/ubuntu/pre-packages.txt | xargs sudo apt install -y
   
