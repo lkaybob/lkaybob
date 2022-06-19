@@ -84,6 +84,8 @@ set_nvim() {
   fi
 
   ln -nfs $DOTFILES/.config/nvim/init.vim $HOME/.config/nvim/init.vim
+  ln -nfs $DOTFILES/.config/nvim/nvim-tree.lua $HOME/.config/nvim/nvim-tree.lua
+  ln -nfs $DOTFILES/.config/nvim/lualine.lua $HOME/.config/nvim/lualine.lua
 }
 
 set_ssh() {
