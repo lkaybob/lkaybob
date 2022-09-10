@@ -1,4 +1,7 @@
-tmux neovim zsh
+automake libtoolize libtool-bin
+gettext
+
+tmux zsh
 
 nodejs
 docker-ce docker-ce-cli containerd.io
