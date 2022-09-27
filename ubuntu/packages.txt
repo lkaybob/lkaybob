@@ -1,4 +1,4 @@
-automake libtoolize libtool-bin
+automake libtool-bin
 gettext
 
 tmux zsh

@@ -19,7 +19,7 @@ print_banner() {
 }
 
 set_zsh() {
-  if [[ -x $(which zsh) ]]; then
+  if [[ ! -x $(which zsh) ]]; then
     # Install oh-my-zsh
     sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" \
       "" --unattended --keep-zshrc
@@ -28,7 +28,7 @@ set_zsh() {
     wget -O $HOME/.oh-my-zsh/themes/bullet-train.zsh-theme \
       https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
     
-    [ ! -f $HOME/.zshrc ] && rm $HOME/.zshrc
+    [ -f $HOME/.zshrc ] && rm $HOME/.zshrc
     ln -nfs $DOTFILES/.zshrc $HOME/.zshrc
   fi
 }
