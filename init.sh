@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 DOTFILES=$HOME/lkaybob
 OS_TYPE=$(uname -s)
+NODE_MAJOR=20
 
 print_banner() {
   echo "    ____               __          __           __      __  _____ __"
@@ -55,7 +56,13 @@ install_linux_packages() {
   paste -sd ' ' $DOTFILES/ubuntu/pre-packages.txt | xargs sudo apt install -y
   
   ## Node.js current
-  curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+  sudo apt install -y ca-certificates curl gnupg
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+  
+  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+  sudo apt update
+  sudo apt install nodejs -y
   
   ## Docker
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
