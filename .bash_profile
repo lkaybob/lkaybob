@@ -8,7 +8,7 @@ fi
 
 # Mac OSX Specific settings
 if [[ "$(uname -s)" == "Darwin" ]]; then
-  export PATH="/opt/homebrew/opt/mysql-client/bin:/usr/local/opt/openjdk/bin:$PATH"
+  export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/opt/mysql-client/bin:/usr/local/opt/openjdk/bin:$HOME/.local/bin:$PATH"
 
   # iterm integration
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
