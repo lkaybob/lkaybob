@@ -3,6 +3,7 @@ DOTFILES=$HOME/lkaybob
 OS_TYPE=$(uname -s)
 NODE_VERSION=--lts
 SKIP_DOCKER=false
+SKIP_PACKAGES=false
 
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
@@ -11,9 +12,13 @@ while [[ $# -gt 0 ]]; do
       SKIP_DOCKER=true
       shift
       ;;
+    --skip-packages)
+      SKIP_PACKAGES=true
+      shift
+      ;;
     *)
       echo "Unknown option: $1"
-      echo "Usage: $0 [--skip-docker]"
+      echo "Usage: $0 [--skip-docker] [--skip-packages]"
       exit 1
       ;;
   esac
@@ -180,10 +185,14 @@ set_ssh() {
 print_banner
 set_zsh
 
-if [[ "$OS_TYPE" == "Darwin" ]]; then
-  set_homebrew
+if [[ "$SKIP_PACKAGES" == "false" ]]; then
+  if [[ "$OS_TYPE" == "Darwin" ]]; then
+    set_homebrew
+  else
+    install_linux_packages
+  fi
 else
-  install_linux_packages
+  echo "Skipping package installation"
 fi
 
 if [[ "$SKIP_DOCKER" == "false" ]]; then
