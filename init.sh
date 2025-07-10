@@ -2,6 +2,22 @@
 DOTFILES=$HOME/lkaybob
 OS_TYPE=$(uname -s)
 NODE_VERSION=--lts
+SKIP_DOCKER=false
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --skip-docker)
+      SKIP_DOCKER=true
+      shift
+      ;;
+    *)
+      echo "Unknown option: $1"
+      echo "Usage: $0 [--skip-docker]"
+      exit 1
+      ;;
+  esac
+done
 
 print_banner() {
   echo "    ____               __          __           __      __  _____ __"
@@ -62,11 +78,20 @@ set_homebrew() {
   # Brew setup
   brew update
   brew tap homebrew/bundle
-  brew bundle --file=$DOTFILES/osx/Brewfile
+  
+  # Install formulae first (compatible with Linuxbrew)
+  brew bundle --file=$DOTFILES/osx/Brewfile.formula
+  
+  # Install casks (macOS only)
+  if [[ "$OS_TYPE" == "Darwin" ]]; then
+    brew bundle --file=$DOTFILES/osx/Brewfile.cask
+  fi
   
   # Clean up the caches
   brew cleanup
-  brew cask cleanup
+  if [[ "$OS_TYPE" == "Darwin" ]]; then
+    brew cask cleanup
+  fi
 }
 
 set_nvm() {
@@ -161,7 +186,11 @@ else
   install_linux_packages
 fi
 
-set_docker
+if [[ "$SKIP_DOCKER" == "false" ]]; then
+  set_docker
+else
+  echo "Skipping Docker installation"
+fi
 set_nvm
 set_tmux
 set_nvim
