@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 DOTFILES=$HOME/lkaybob
 OS_TYPE=$(uname -s)
-NODE_MAJOR=20
+NODE_VERSION=--lts
 
 print_banner() {
   echo "    ____               __          __           __      __  _____ __"
@@ -19,8 +19,23 @@ print_banner() {
   fi
 }
 
+
+__check_command() {
+  command -v "$1" > /dev/null 2>&1
+}
+
 set_zsh() {
+  # Check if zsh is installed first
   if [[ ! -x $(which zsh) ]]; then
+    echo "Zsh not found. Please install zsh first."
+    return 1
+  fi
+  
+  # Check if oh-my-zsh is already installed
+  if [[ -d "$HOME/.oh-my-zsh" ]]; then
+    echo "Oh-my-zsh already installed"
+  else
+    echo "Installing oh-my-zsh..."
     # Install oh-my-zsh
     sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" \
       "" --unattended --keep-zshrc
@@ -29,9 +44,13 @@ set_zsh() {
     wget -O $HOME/.oh-my-zsh/themes/bullet-train.zsh-theme \
       https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
     
-    [ -f $HOME/.zshrc ] && rm $HOME/.zshrc
-    ln -nfs $DOTFILES/.zshrc $HOME/.zshrc
+    echo "Oh-my-zsh installation completed"
   fi
+  
+  # Always ensure our zshrc is symlinked
+  [ -f $HOME/.zshrc ] && rm $HOME/.zshrc
+  ln -nfs $DOTFILES/.zshrc $HOME/.zshrc
+  echo "Zsh configuration linked"
 }
 
 set_homebrew() {
@@ -50,24 +69,57 @@ set_homebrew() {
   brew cask cleanup
 }
 
+set_nvm() {
+  # Install NVM (Node Version Manager)
+  if [[ ! -d "$HOME/.nvm" ]]; then
+    echo "Installing NVM..."
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    
+    # Load NVM immediately
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    
+    # Install and use Node.js LTS
+    nvm install $NODE_VERSION
+    nvm use $NODE_VERSION
+    nvm alias default $NODE_VERSION
+    
+    echo "Node.js LTS installed and activated via NVM"
+  else
+    echo "NVM already installed"
+  fi
+}
+
+set_docker() {
+  # Check if Docker is already installed
+  if __check_command docker; then
+    echo "Docker already installed"
+    return
+  fi
+  
+  echo "Installing Docker..."
+  
+  if [[ "$OS_TYPE" == "Darwin" ]]; then
+    # Docker Desktop for Mac is handled via Homebrew in Brewfile
+    echo "Docker Desktop will be installed via Homebrew"
+  else
+    # Install Docker on Linux
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    sudo apt update
+    sudo apt install -y docker-ce docker-ce-cli containerd.io
+    
+    # Add user to docker group to run docker without sudo
+    sudo usermod -aG docker $USER
+    echo "Docker installed. You may need to log out and back in for group changes to take effect."
+  fi
+}
+
 # TODO RHEL / CentOS?
 install_linux_packages() {
   sudo apt update
   paste -sd ' ' $DOTFILES/ubuntu/pre-packages.txt | xargs sudo apt install -y
-  
-  ## Node.js current
-  sudo apt install -y ca-certificates curl gnupg
-  sudo mkdir -p /etc/apt/keyrings
-  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-  
-  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-  sudo apt update
-  sudo apt install nodejs -y
-  
-  ## Docker
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  
   paste -sd ' ' $DOTFILES/ubuntu/packages.txt | xargs sudo apt install -y
 }
 
@@ -109,6 +161,8 @@ else
   install_linux_packages
 fi
 
+set_docker
+set_nvm
 set_tmux
 set_nvim
 set_ssh

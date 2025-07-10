@@ -3,6 +3,4 @@ gettext
 
 tmux zsh
 
-nodejs
-docker-ce docker-ce-cli containerd.io
 python3-pip python3
