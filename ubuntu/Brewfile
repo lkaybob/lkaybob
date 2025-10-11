@@ -2,6 +2,8 @@
 brew "docker"
 # Isolated development environments using Docker
 brew "docker-compose"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Development kit for the Java programming language
