@@ -165,6 +165,15 @@ set_bash_files() {
 
 set_tmux() {
   ln -nfs $DOTFILES/.tmux.conf $HOME/.tmux.conf
+
+  # Install TPM (Tmux Plugin Manager) if not already installed
+  if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+    echo "Installing TPM (Tmux Plugin Manager)..."
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    echo "TPM installed. Start tmux and press control key (Ctrl+A) then I to install plugins"
+  else
+    echo "TPM already installed"
+  fi
 }
 
 set_nvim() {
@@ -186,13 +195,16 @@ set_ssh() {
 
 # Main body
 print_banner
-set_zsh
 
+# Install packages first (including zsh)
 if [[ "$SKIP_PACKAGES" == "false" ]]; then
   set_homebrew
 else
   echo "Skipping package installation"
 fi
+
+# Configure zsh after it's installed
+set_zsh
 
 if [[ "$SKIP_DOCKER" == "false" ]]; then
   set_docker
@@ -215,7 +227,6 @@ echo "1. Neovim plugins:"
 echo "   - Open nvim and run: :PlugInstall"
 echo ""
 echo "2. Tmux plugins (TPM):"
-echo "   - Install TPM: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
 echo "   - Start tmux and press: control key (Ctrl+A) then I (capital i) to install plugins"
 echo ""
 echo "=========================================="
