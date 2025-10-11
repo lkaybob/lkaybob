@@ -1,2 +1,6 @@
-Package names are based on Ubuntu 20.04.
-* Some packages' names are difference (ex. "gnugpg-agent" is "gpg-agent" on 18.04")
+This directory contains Linux-specific configuration files.
+
+## Brewfile
+
+The `Brewfile` contains packages to be installed via Linuxbrew (Homebrew for Linux).
+This provides a unified package management approach across both macOS and Linux platforms.

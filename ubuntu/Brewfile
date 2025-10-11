@@ -1,0 +1,10 @@
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Isolated development environments using Docker
+brew "docker-compose"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Development kit for the Java programming language
+brew "openjdk@21"
+# UNIX shell (command interpreter)
+brew "zsh"

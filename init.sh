@@ -77,21 +77,33 @@ set_zsh() {
 set_homebrew() {
   # Check if homebrew exists
   if test ! $(which brew); then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    if [[ "$OS_TYPE" == "Darwin" ]]; then
+      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    else
+      # Install Linuxbrew
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+      # Add Homebrew to PATH
+      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+      echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.bash_profile
+    fi
   fi
-  
+
   # Brew setup
   brew update
   brew tap homebrew/bundle
-  
-  # Install formulae first (compatible with Linuxbrew)
-  brew bundle --file=$DOTFILES/osx/Brewfile.formula
-  
-  # Install casks (macOS only)
+
   if [[ "$OS_TYPE" == "Darwin" ]]; then
+    # Install formulae first (compatible with Linuxbrew)
+    brew bundle --file=$DOTFILES/osx/Brewfile.formula
+
+    # Install casks (macOS only)
     brew bundle --file=$DOTFILES/osx/Brewfile.cask
+  else
+    # Install Linux packages via Homebrew
+    brew bundle --file=$DOTFILES/ubuntu/Brewfile
   fi
-  
+
   # Clean up the caches
   brew cleanup
   if [[ "$OS_TYPE" == "Darwin" ]]; then
@@ -122,36 +134,27 @@ set_nvm() {
 }
 
 set_docker() {
-  # Check if Docker is already installed
-  if __check_command docker; then
-    echo "Docker already installed"
-    return
+  # Docker is installed via Brewfile
+  # This function handles post-installation configuration
+
+  if ! __check_command docker; then
+    echo "Docker not found. It should be installed via Brewfile."
+    return 1
   fi
-  
-  echo "Installing Docker..."
-  
+
   if [[ "$OS_TYPE" == "Darwin" ]]; then
-    # Docker Desktop for Mac is handled via Homebrew in Brewfile
-    echo "Docker Desktop will be installed via Homebrew"
+    echo "Docker Desktop installed via Homebrew"
   else
-    # Install Docker on Linux
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-    sudo apt update
-    sudo apt install -y docker-ce docker-ce-cli containerd.io
-    
     # Add user to docker group to run docker without sudo
-    sudo usermod -aG docker $USER
-    echo "Docker installed. You may need to log out and back in for group changes to take effect."
+    if ! groups $USER | grep -q docker; then
+      sudo usermod -aG docker $USER
+      echo "Added $USER to docker group. You may need to log out and back in for group changes to take effect."
+    else
+      echo "User already in docker group"
+    fi
   fi
 }
 
-# TODO RHEL / CentOS?
-install_linux_packages() {
-  sudo apt update
-  paste -sd ' ' $DOTFILES/ubuntu/pre-packages.txt | xargs sudo apt install -y
-  paste -sd ' ' $DOTFILES/ubuntu/packages.txt | xargs sudo apt install -y
-}
 
 set_bash_files() {
   ln -nfs $DOTFILES/.bash_aliases $HOME/.bash_aliases
@@ -186,11 +189,7 @@ print_banner
 set_zsh
 
 if [[ "$SKIP_PACKAGES" == "false" ]]; then
-  if [[ "$OS_TYPE" == "Darwin" ]]; then
-    set_homebrew
-  else
-    install_linux_packages
-  fi
+  set_homebrew
 else
   echo "Skipping package installation"
 fi
@@ -207,3 +206,16 @@ set_ssh
 
 echo ""
 echo "All done!"
+echo ""
+echo "=========================================="
+echo "  Manual Post-Installation Steps"
+echo "=========================================="
+echo ""
+echo "1. Neovim plugins:"
+echo "   - Open nvim and run: :PlugInstall"
+echo ""
+echo "2. Tmux plugins (TPM):"
+echo "   - Install TPM: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+echo "   - Start tmux and press: control key (Ctrl+A) then I (capital i) to install plugins"
+echo ""
+echo "=========================================="

@@ -1,6 +1,0 @@
-automake libtool-bin
-gettext
-
-tmux zsh
-
-python3-pip python3
