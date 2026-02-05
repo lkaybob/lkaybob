@@ -40,16 +40,18 @@ The setup follows this order:
 
 ### Unified Homebrew Architecture
 The repository uses Homebrew/Linuxbrew for package management across both platforms:
+- `osx/Brewfile` - Combined macOS Brewfile (taps, formulae, casks, mas, vscode extensions)
 - `osx/Brewfile.formula` - macOS command-line tools and libraries
-- `osx/Brewfile.cask` - macOS GUI applications (macOS-only, skipped on Linux)
+- `osx/Brewfile.cask` - macOS GUI applications and Mac App Store entries (macOS-only, skipped on Linux)
 - `ubuntu/Brewfile` - Linux packages via Linuxbrew
 
 This unified approach provides consistent package management across macOS and Linux systems. The `set_homebrew()` function (init.sh:77-112) handles installation for both platforms, automatically detecting the OS and using the appropriate Brewfile.
 
 ### Platform-Specific Configuration
 - `osx/` - macOS-specific configurations
-  - `Brewfile.formula` - macOS command-line tools
-  - `Brewfile.cask` - macOS GUI applications
+  - `Brewfile` - Combined Brewfile (all taps, formulae, casks, mas, vscode)
+  - `Brewfile.formula` - macOS command-line tools (subset of Brewfile)
+  - `Brewfile.cask` - macOS GUI applications and Mac App Store entries (subset of Brewfile)
   - `com.googlecode.iterm2.plist` - iTerm2 configuration
   - `unload-pulse-secure.sh` - Pulse Secure cleanup script
 - `ubuntu/` - Linux-specific configurations
@@ -75,6 +77,10 @@ Key bindings defined in init.vim:37-38:
 - `Ctrl+N` - Toggle file tree
 - `<leader>r` - Refresh file tree
 - `<leader>n` - Find current file in tree
+
+## Homebrew Permission Note
+
+Homebrew is installed under the `administrator` user, so `brew install` and `brew uninstall` commands will fail with permission errors when run from Claude Code. Instead of executing these commands directly, output the command for the user to run manually.
 
 ## Important Notes
 
