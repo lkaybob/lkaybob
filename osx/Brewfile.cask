@@ -8,7 +8,6 @@ cask "balenaetcher"
 cask "bartender"
 cask "claude"
 cask "codex"
-cask "discord"
 cask "docker-desktop"
 cask "drawio"
 cask "evernote"
@@ -22,23 +21,20 @@ cask "kiro"
 cask "maccy"
 cask "microsoft-auto-update"
 cask "microsoft-edge"
+cask "microsoft-office"
 cask "microsoft-teams"
 cask "multiviewer"
 cask "mysql-shell"
-cask "obs"
 cask "obsidian"
-cask "omegat"
 cask "ridibooks"
 cask "scroll-reverser"
 cask "selfcontrol"
-cask "sourcetree"
 cask "temurin@11"
 cask "temurin@17"
 cask "tripmode"
 cask "typora"
 cask "vagrant"
 cask "visual-studio-code"
-cask "webex-meetings"
 cask "xquartz"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
@@ -48,11 +44,7 @@ mas "Elmedia Video Player", id: 1044549675
 mas "Evernote Web Clipper", id: 1481669779
 mas "KakaoTalk", id: 869223134
 mas "Magnet", id: 441258766
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft Outlook", id: 985367838
-mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft To Do", id: 1274495053
-mas "Microsoft Word", id: 462054704
 mas "Numbers", id: 409203825
 mas "PiPifier", id: 1160374471
 mas "Save to Pocket", id: 1477385213
