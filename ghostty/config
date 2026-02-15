@@ -1,0 +1,34 @@
+# Ghostty Configuration
+# Migrated from iTerm2
+
+# Font
+font-family = UbuntuMono Nerd Font Mono
+font-size = 17
+
+# Theme
+# Run `ghostty +list-themes` to see all available themes
+theme = Monokai Vivid
+
+# Window
+window-width = 80
+window-height = 25
+
+# Scrollback
+scrollback-limit = 10000
+
+# Shell integration (enables features like better cursor tracking, title setting)
+shell-integration = zsh
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Use Option as Meta key (matches iTerm2 default)
+macos-option-as-alt = left
+
+# Window appearance
+window-padding-x = 4
+window-padding-y = 4
+
+# Copy on select (matches common terminal behavior)
+copy-on-select = clipboard

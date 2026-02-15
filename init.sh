@@ -189,6 +189,14 @@ set_nvim() {
   ln -nfs $DOTFILES/.config/nvim/lualine.lua $HOME/.config/nvim/lualine.lua
 }
 
+set_ghostty() {
+  if [[ "$OS_TYPE" == "Darwin" ]]; then
+    mkdir -p $HOME/.config/ghostty
+    ln -nfs $DOTFILES/ghostty/config $HOME/.config/ghostty/config
+    echo "Ghostty configuration linked"
+  fi
+}
+
 set_ssh() {
   rsync -av --no-perms $DOTFILES/.ssh $HOME/
 }
@@ -214,6 +222,7 @@ fi
 set_nvm
 set_tmux
 set_nvim
+set_ghostty
 set_ssh
 
 echo ""

@@ -102,3 +102,5 @@ if [ -f $HOME/.bash_profile ]; then
   source $HOME/.bash_profile
 fi
 
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
