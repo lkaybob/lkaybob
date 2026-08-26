@@ -10,3 +10,5 @@ brew "neovim"
 brew "openjdk@21"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Agentic coding tool that lives in your terminal
+cask "claude-code"
