@@ -37,6 +37,7 @@ The setup follows this order:
 6. Dotfile symlinking (bash, zsh, tmux)
 7. Neovim configuration with vim-plug
 8. SSH configuration (copied via rsync, not symlinked)
+9. Claude Code configuration (`set_claude()` - settings.json symlink, personal skills)
 
 ### Unified Homebrew Architecture
 The repository uses Homebrew/Linuxbrew for package management across both platforms:
@@ -65,6 +66,22 @@ Most configuration files are symlinked from `$HOME/lkaybob` to home directory:
 - Editor: `.config/nvim/init.vim`, `.config/nvim/nvim-tree.lua`, `.config/nvim/lualine.lua`
 
 **Exception**: SSH configuration (`.ssh/`) is copied via `rsync -av --no-perms` rather than symlinked for security purposes.
+
+### Claude Code Configuration
+`set_claude()` in `init.sh` links machine-wide Claude Code config:
+- `.claude/settings.json` - symlinked to `~/.claude/settings.json`. Sets the
+  default `model` (`sonnet`), `enabledPlugins`
+  (`superpowers@claude-plugins-official`, `claude-hud@claude-hud`), and
+  `extraKnownMarketplaces` (the `claude-hud` marketplace,
+  `jarrodwatts/claude-hud`).
+- `.claude/skills/*/` - each personal skill directory is symlinked
+  individually into `~/.claude/skills/` so they coexist with
+  `~/.claude/skills/synced/` (skills synced from claude.ai).
+
+Plugins declared in `settings.json` install automatically on the next
+`claude` launch. The first launch after adding a new marketplace shows a
+one-time trust prompt; `init.sh` cannot pre-add the marketplace because
+`claude plugin marketplace add` requires interactive confirmation.
 
 ### Neovim Configuration
 The setup uses vim-plug as the plugin manager with these main plugins:
