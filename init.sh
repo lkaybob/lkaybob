@@ -204,6 +204,8 @@ set_ssh() {
 set_claude() {
   mkdir -p $HOME/.claude
 
+  ln -nfs $DOTFILES/.claude/CLAUDE.md $HOME/.claude/CLAUDE.md
+
   # Machine-wide settings: default model (sonnet), enabled plugins,
   # and extra plugin marketplaces.
   ln -nfs $DOTFILES/.claude/settings.json $HOME/.claude/settings.json
