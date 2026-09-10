@@ -1,0 +1,15 @@
+{
+  "theme": "auto",
+  "agentPushNotifEnabled": true,
+  "tui": "fullscreen",
+  "model": "sonnet",
+  "extraKnownMarketplaces": {
+    "claude-hud": {
+      "source": { "source": "github", "repo": "jarrodwatts/claude-hud" }
+    }
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "claude-hud@claude-hud": true
+  }
+}

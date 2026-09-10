@@ -201,6 +201,27 @@ set_ssh() {
   rsync -av --no-perms $DOTFILES/.ssh $HOME/
 }
 
+set_claude() {
+  mkdir -p $HOME/.claude
+
+  # Machine-wide settings: default model (sonnet), enabled plugins,
+  # and extra plugin marketplaces.
+  ln -nfs $DOTFILES/.claude/settings.json $HOME/.claude/settings.json
+  echo "Claude Code settings linked"
+
+  # Personal skills: symlink each skill directory individually so they
+  # coexist with ~/.claude/skills/synced (skills synced from claude.ai).
+  mkdir -p $HOME/.claude/skills
+  for skill in $DOTFILES/.claude/skills/*/; do
+    [ -d "$skill" ] || continue
+    ln -nfs "${skill%/}" "$HOME/.claude/skills/$(basename "$skill")"
+    echo "Linked Claude skill: $(basename "$skill")"
+  done
+
+  # Plugins declared in settings.json (superpowers, claude-hud) are
+  # installed automatically the next time Claude Code launches.
+}
+
 # Main body
 print_banner
 
@@ -224,6 +245,7 @@ set_tmux
 set_nvim
 set_ghostty
 set_ssh
+set_claude
 
 echo ""
 echo "All done!"
