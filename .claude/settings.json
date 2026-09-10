@@ -7,7 +7,12 @@
   },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
-    "claude-hud@claude-hud": true
+    "claude-hud@claude-hud": true,
+    "aws-core@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "playground@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-hud": {
