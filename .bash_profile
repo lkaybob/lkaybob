@@ -1,3 +1,11 @@
+# Source .bashrc for interactive login shells (e.g. SSH sessions).
+# Bash reads only .bash_profile when it exists, skipping .profile, so
+# without this the distro's .bashrc (colored prompt, completion, etc.)
+# never runs on login.
+if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
+    source "$HOME/.bashrc"
+fi
+
 # swagger-codegen
 # rust-lang
 export PATH="/usr/local/opt/swagger-codegen@2/bin:$HOME/.cargo/bin:$PATH"
