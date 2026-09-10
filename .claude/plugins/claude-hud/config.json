@@ -1,6 +1,6 @@
 {
   "lineLayout": "compact",
-  "showSeparators": false,
+  "showSeparators": true,
   "language": "en",
   "display": {
     "showTools": false,
@@ -16,7 +16,7 @@
   },
   "gitStatus": {
     "enabled": true,
-    "showDirty": true,
+    "showDirty": false,
     "showAheadBehind": false,
     "showFileStats": false
   },

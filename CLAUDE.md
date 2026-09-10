@@ -78,10 +78,15 @@ Most configuration files are symlinked from `$HOME/lkaybob` to home directory:
   runtime and picks the newest installed `claude-hud` plugin version, so it
   needs no per-machine edits (contrast `/claude-hud:setup`, which bakes in an
   absolute runtime path).
-- `.claude/plugins/claude-hud/config.json` - symlinked to
-  `~/.claude/plugins/claude-hud/config.json`. claude-hud HUD display
-  preferences (compact layout, which elements are shown, git status). Editable
-  via `/claude-hud:configure`, which writes through the symlink.
+- `.claude/plugins/claude-hud/config.json` - **copied** (via `rsync`, not
+  symlinked) to `~/.claude/plugins/claude-hud/config.json`. claude-hud opens
+  this file with `O_NOFOLLOW` and silently ignores it (falling back to all
+  defaults) if it is a symlink, so it must be a real file. claude-hud HUD
+  display preferences (compact layout, which elements are shown, git status).
+  Editable via `/claude-hud:configure`, which writes the live copy at
+  `~/.claude/...`; copy that back into this repo before committing. The same
+  `O_NOFOLLOW` guard applies to the optional `~/.claude/claude-hud.json`
+  override, so that cannot be symlinked either.
 - `.claude/skills/*/` - each personal skill directory is symlinked
   individually into `~/.claude/skills/` so they coexist with
   `~/.claude/skills/synced/` (skills synced from claude.ai).

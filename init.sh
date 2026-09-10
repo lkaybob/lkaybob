@@ -212,10 +212,14 @@ set_claude() {
   echo "Claude Code settings linked"
 
   # claude-hud HUD display preferences (layout, shown elements, git status).
+  # Copied, not symlinked: claude-hud opens config.json with O_NOFOLLOW and
+  # ignores the file (falling back to all defaults) if it's a symlink. Edits
+  # made via /claude-hud:configure land in the live copy, so copy that back
+  # into $DOTFILES before committing.
   mkdir -p $HOME/.claude/plugins/claude-hud
-  ln -nfs $DOTFILES/.claude/plugins/claude-hud/config.json \
+  rsync -av --no-perms $DOTFILES/.claude/plugins/claude-hud/config.json \
     $HOME/.claude/plugins/claude-hud/config.json
-  echo "claude-hud config linked"
+  echo "claude-hud config copied"
 
   # Personal skills: symlink each skill directory individually so they
   # coexist with ~/.claude/skills/synced (skills synced from claude.ai).
