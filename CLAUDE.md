@@ -71,9 +71,17 @@ Most configuration files are symlinked from `$HOME/lkaybob` to home directory:
 `set_claude()` in `init.sh` links machine-wide Claude Code config:
 - `.claude/settings.json` - symlinked to `~/.claude/settings.json`. Sets the
   default `model` (`sonnet`), `enabledPlugins`
-  (`superpowers@claude-plugins-official`, `claude-hud@claude-hud`), and
+  (`superpowers@claude-plugins-official`, `claude-hud@claude-hud`),
   `extraKnownMarketplaces` (the `claude-hud` marketplace,
-  `jarrodwatts/claude-hud`).
+  `jarrodwatts/claude-hud`), and the `statusLine` command that renders the
+  claude-hud HUD. The `statusLine` command resolves `node` from `PATH` at
+  runtime and picks the newest installed `claude-hud` plugin version, so it
+  needs no per-machine edits (contrast `/claude-hud:setup`, which bakes in an
+  absolute runtime path).
+- `.claude/plugins/claude-hud/config.json` - symlinked to
+  `~/.claude/plugins/claude-hud/config.json`. claude-hud HUD display
+  preferences (compact layout, which elements are shown, git status). Editable
+  via `/claude-hud:configure`, which writes through the symlink.
 - `.claude/skills/*/` - each personal skill directory is symlinked
   individually into `~/.claude/skills/` so they coexist with
   `~/.claude/skills/synced/` (skills synced from claude.ai).

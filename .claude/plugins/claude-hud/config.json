@@ -1,0 +1,26 @@
+{
+  "lineLayout": "compact",
+  "showSeparators": false,
+  "language": "en",
+  "display": {
+    "showTools": false,
+    "showAgents": true,
+    "showTodos": true,
+    "showConfigCounts": false,
+    "showTokenBreakdown": false,
+    "showUsage": false,
+    "showDuration": true,
+    "showSessionName": false,
+    "showSessionTokens": false,
+    "showPromptCache": true
+  },
+  "gitStatus": {
+    "enabled": true,
+    "showDirty": true,
+    "showAheadBehind": false,
+    "showFileStats": false
+  },
+  "jjStatus": {
+    "enabled": false
+  }
+}
