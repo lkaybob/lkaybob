@@ -206,7 +206,7 @@ set_claude() {
 
   ln -nfs $DOTFILES/.claude/CLAUDE.md $HOME/.claude/CLAUDE.md
 
-  # Machine-wide settings: default model (sonnet), enabled plugins,
+  # Machine-wide settings: default model (opus), enabled plugins,
   # extra plugin marketplaces, and the claude-hud statusline command.
   ln -nfs $DOTFILES/.claude/settings.json $HOME/.claude/settings.json
   echo "Claude Code settings linked"

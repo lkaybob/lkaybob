@@ -70,7 +70,7 @@ Most configuration files are symlinked from `$HOME/lkaybob` to home directory:
 ### Claude Code Configuration
 `set_claude()` in `init.sh` links machine-wide Claude Code config:
 - `.claude/settings.json` - symlinked to `~/.claude/settings.json`. Sets the
-  default `model` (`sonnet`), `enabledPlugins`
+  default `model` (`opus`), `enabledPlugins`
   (`superpowers@claude-plugins-official`, `claude-hud@claude-hud`),
   `extraKnownMarketplaces` (the `claude-hud` marketplace,
   `jarrodwatts/claude-hud`), and the `statusLine` command that renders the
