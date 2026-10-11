@@ -2,7 +2,10 @@
 # Bash reads only .bash_profile when it exists, skipping .profile, so
 # without this the distro's .bashrc (colored prompt, completion, etc.)
 # never runs on login.
+# force_color_prompt makes the stock Ubuntu .bashrc color the prompt even
+# when TERM isn't *-256color (e.g. xterm, screen, tmux).
 if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
+    force_color_prompt=yes
     source "$HOME/.bashrc"
 fi
 
