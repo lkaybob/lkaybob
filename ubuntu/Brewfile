@@ -1,13 +1,25 @@
+# Official Amazon AWS command-line interface
+brew "awscli"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Isolated development environments using Docker
 brew "docker-compose"
+# GNU compiler collection
+brew "gcc"
+# Improved top (interactive process viewer)
+brew "htop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Development kit for the Java programming language
 brew "openjdk@21"
+# Safe, concurrent, practical language
+brew "rust"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Agentic coding tool that lives in your terminal
